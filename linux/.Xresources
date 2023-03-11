@@ -1,0 +1,49 @@
+
+URxvt.foreground:   [90]#c6c8d1
+URxvt.background:   #161821
+URxvt.cursorColor:  #c6c8d1
+
+! black
+URxvt.color0:       #1e2132
+URxvt.color8:       #6b7089
+
+! red
+URxvt.color1:       #e27878
+URxvt.color9:       #e98989
+
+! green
+URxvt.color2:       #b4be82
+URxvt.color10:      #c0ca8e
+
+! yellow
+URxvt.color3:       #e2a478
+URxvt.color11:      #e9b189
+
+! blue
+URxvt.color4:       #84a0c6
+URxvt.color12:      #91acd1
+
+! magenta
+URxvt.color5:       #a093c7
+URxvt.color13:      #ada0d3
+
+! cyan
+URxvt.color6:       #89b8c2
+URxvt.color14:      #95c4ce
+
+! white
+URxvt.color7:       #c6c8d1
+URxvt.color15:      #d2d4de
+
+URxvt.font: xft:MesloLGS NF-Regular:size=11:antialias=true:minspace=false
+URxvt.boldFont: xft:MesloLGS NF-Bold:size=11:antialias=true:minspace=false
+URxvt.italicFont: xft:MesloLGS NF-Italic:size=11:antialias=true:minspace=false
+
+URxvt.scrollBar: false
+
+URxvt.perl-lib: /home/patricio/.config/urxvt/ext
+URxvt.perl-ext-common: url-select,keyboard-select,resize-font,matcher,selection-to-clipboard,readline
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keyboard-select.clipboard: True
+
+URxvt.keysym.M-u: perl:url-select:select_next
