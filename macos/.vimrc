@@ -15,16 +15,33 @@ Plug 'timonv/vim-cargo'
 Plug 'tpope/vim-dispatch'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-obsession'
+Plug 'ryanoasis/vim-devicons'
+Plug 'nvim-tree/nvim-web-devicons'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'nvim-lua/plenary.nvim'
+Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'brainfucksec/neovim-lua'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'sindrets/diffview.nvim'
+Plug 'preservim/nerdcommenter'
+Plug 'romgrk/barbar.nvim'
 
 call plug#end()
 
 colorscheme iceberg
 
-let g:rustfmt_autosave = 1
-let g:rustfmt_emit_files = 1
-let g:rustfmt_fail_silently = 0
+" let g:rustfmt_autosave = 1
+" let g:rustfmt_emit_files = 1
+" let g:rustfmt_fail_silently = 0
 let g:cargo_command = "Dispatch cargo {cmd}"
 let g:airline#extensions#ale#enabled = 1
+
+autocmd BufWritePre *.rs silent call CocAction('format')
+
 
 " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
 " utf-8 byte sequence
@@ -93,6 +110,11 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Nerdtree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <leader>nt :NERDTreeToggle<CR>
+nnoremap <leader>nf :NERDTreeFind<CR>
 
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
