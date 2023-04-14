@@ -1,29 +1,47 @@
 set background=dark
-colorscheme iceberg
+set number
 set tabstop=4
 set expandtab
 set shiftwidth=4
 set softtabstop=4
-set guifont=MesloLGS\ NF-Regular:h11
 
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
+Plug 'jparise/vim-graphql'
 Plug 'neoclide/coc-java'
 Plug 'timonv/vim-cargo'
 Plug 'tpope/vim-dispatch'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-obsession'
+Plug 'ryanoasis/vim-devicons'
+Plug 'nvim-tree/nvim-web-devicons'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'nvim-lua/plenary.nvim'
+Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'brainfucksec/neovim-lua'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'sindrets/diffview.nvim'
+Plug 'preservim/nerdcommenter'
+Plug 'romgrk/barbar.nvim'
 
 call plug#end()
 
-let g:rustfmt_autosave = 1
-let g:rustfmt_emit_files = 1
-let g:rustfmt_fail_silently = 0
+colorscheme iceberg
+
+" let g:rustfmt_autosave = 1
+" let g:rustfmt_emit_files = 1
+" let g:rustfmt_fail_silently = 0
 let g:cargo_command = "Dispatch cargo {cmd}"
 let g:airline#extensions#ale#enabled = 1
-" let g:airline_symbols_ascii = 1
+
+autocmd BufWritePre *.rs silent call CocAction('format')
+
 
 " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
 " utf-8 byte sequence
@@ -93,7 +111,10 @@ endfunction
 " Highlight the symbol and its references when holding the cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+" Nerdtree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <leader>nt :NERDTreeToggle<CR>
+nnoremap <leader>nf :NERDTreeFind<CR>
 
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
@@ -168,7 +189,7 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " Add (Neo)Vim's native statusline support
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics
@@ -187,3 +208,16 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+function! LinterStatus() abort
+      let l:counts = ale#statusline#Count(bufnr(''))
+
+      let l:all_errors = l:counts.error + l:counts.style_error
+      let l:all_non_errors = l:counts.total - l:all_errors
+
+      return l:counts.total == 0 ? '? all good ?' : printf(
+            \   '?? %dW %dE',
+            \   all_non_errors,
+            \   all_errors
+            \)
+endfunction

@@ -1,4 +1,6 @@
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
+set runtimepath^=~/.vim runtimepath+=~/.vim/after runtimepath+=~/.config/nvim/lua
 let &packpath=&runtimepath
 source ~/.vimrc
-set number
+
+lua require('debugging')
+lua require('custom-keys')
