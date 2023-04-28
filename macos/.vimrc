@@ -29,6 +29,9 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'preservim/nerdcommenter'
 Plug 'romgrk/barbar.nvim'
+Plug 'antoinemadec/FixCursorHold.nvim'
+Plug 'dhruvasagar/vim-zoom'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -190,7 +193,6 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline
 " set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 " Mappings for CoCList
 " Show all diagnostics
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
@@ -221,3 +223,7 @@ function! LinterStatus() abort
             \   all_errors
             \)
 endfunction
+
+let g:zoom#statustext = "Z"
+let g:airline_section_c = airline#section#create(['%<', 'file', g:airline_symbols.space, 'readonly', 'coc_status', 'lsp_progress'])
+let g:airline_section_c = g:airline_section_c . '%{zoom#statusline()}'
