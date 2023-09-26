@@ -3,7 +3,7 @@ local opts = { noremap = true, silent = true }
 
 -- Debugging
 -- Press Ctrl+d to toggle debug mode, will remove NvimTree also
-map('n', '<F2>', [[:NERDTreeClose<CR> :lua require'dapui'.toggle()<CR>]], {})
+-- map('n', '<F2>', [[:NERDTreeClose<CR> :lua require'dapui'.toggle()<CR>]], {})
 -- Press f5 to debug
 map('n', '<F5>', [[:lua require'dap'.continue()<CR>]], {})
 -- Press F4 to toggle regular breakpoint
@@ -72,3 +72,19 @@ map('t', "<Esc>", "<C-\\><C-n>:q<CR>", opts)
 -- :BarbarEnable - enables barbar (enabled by default)
 -- :BarbarDisable - very bad command, should never be used
 --
+
+local keymap_opts = { buffer = buffer }
+-- Code navigation and shortcuts
+vim.keymap.set("n", "<c-]>", vim.lsp.buf.definition, keymap_opts)
+vim.keymap.set("n", "K", vim.lsp.buf.hover, keymap_opts)
+vim.keymap.set("n", "gD", vim.lsp.buf.implementation, keymap_opts)
+vim.keymap.set("n", "<c-k>", vim.lsp.buf.signature_help, keymap_opts)
+vim.keymap.set("n", "1gD", vim.lsp.buf.type_definition, keymap_opts)
+vim.keymap.set("n", "gr", vim.lsp.buf.references, keymap_opts)
+vim.keymap.set("n", "g0", vim.lsp.buf.document_symbol, keymap_opts)
+vim.keymap.set("n", "gW", vim.lsp.buf.workspace_symbol, keymap_opts)
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opts)
+-- Goto previous/next diagnostic warning/error
+vim.keymap.set("n", "g[", vim.diagnostic.goto_prev, keymap_opts)
+vim.keymap.set("n", "g]", vim.diagnostic.goto_next, keymap_opts)
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, keymap_opts)

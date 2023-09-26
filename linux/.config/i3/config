@@ -114,16 +114,21 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
+set $ws1 "1: Work"
+set $ws2 "2: Web"
+set $ws3 "3: Chat"
+set $ws4 "4: Music"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+workspace $ws1 output DP-0.1.
+workspace $ws2 output DP-0.8
+workspace $ws3 output DP-0.1.1
+workspace $ws4 output DP-0.1.1
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -196,8 +201,8 @@ bar {
 exec_always --no-startup-id /usr/bin/feh --bg-scale '/usr/share/backgrounds/Optical_Fibers_in_Dark_by_Elena_Stravoravdi.jpg'
 
 # Lock
-bindsym Control+$mod+l exec "i3lock -i /usr/share/backgrounds/lock.png -t -f"
-exec "xautolock -detectsleep -time 3 -locker \"i3lock -c 000000\""
+bindsym Control+$mod+l exec "i3lock -i /usr/share/backgrounds/Jammy-Jellyfish_WP_4096x2304_Grey.png -t -f; sleep 300; xset dpms force off"
+#exec "xautolock -detectsleep -time 5 -locker \"i3lock -c 000000\""
 
 # Bluetooth
 exec --no-startup-id blueman-applet
@@ -206,4 +211,10 @@ exec --no-startup-id blueman-applet
 #exec --no-startup-id /bin/pasystray
 
 # Start compton
-exec --no-startup-id /usr/bin/compton --config /home/patricio/.config/i3/compton.conf
+#exec --no-startup-id /usr/bin/compton --config /home/patricio/.config/i3/compton.conf
+
+# Switch audio
+bindsym XF86Tools workspace $ws4; exec "spotify &"
+bindsym $mod+XF86Tools exec "pactl set-default-sink alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2"
+bindsym Control+XF86Tools exec "pactl set-default-sink bluez_output.08_DF_1F_B3_B9_44.a2dp-sink"
+bindsym Control+$mod+XF86Tools exec "pactl set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo"
