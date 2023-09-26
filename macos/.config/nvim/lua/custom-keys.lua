@@ -42,9 +42,11 @@ map('n', '<Leader>8', '<Cmd>BufferGoto 8<CR>', opts)
 map('n', '<Leader>9', '<Cmd>BufferGoto 9<CR>', opts)
 map('n', '<Leader>0', '<Cmd>BufferLast<CR>', opts)
 -- Pin/unpin buffer
-map('n', '<C-p>', '<Cmd>BufferPin<CR>', opts)
+map('n', '<C-i>', '<Cmd>BufferPin<CR>', opts)
 -- Close buffer
 map('n', '<Leader>bc', '<Cmd>BufferClose<CR>', opts)
+map('n', '<Leader>be', '<Cmd>BufferRestore<CR>', opts)
+map('n', '<Leader>bw', '<Cmd>BufferWipeout<CR>', opts)
 -- Wipeout buffer
 --                 :BufferWipeout
 -- Close commands
@@ -60,6 +62,11 @@ map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
 map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
 map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
 map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
+
+-- FloaTerm configuration
+map('n', "<leader>ft", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=2 fish <CR> ", opts)
+map('n', "t", ":FloatermToggle myfloat<CR>", opts)
+map('t', "<Esc>", "<C-\\><C-n>:q<CR>", opts)
 
 -- Other:
 -- :BarbarEnable - enables barbar (enabled by default)
