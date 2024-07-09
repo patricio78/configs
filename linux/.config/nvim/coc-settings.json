@@ -1,4 +1,0 @@
-{
-  "java.import.gradle.java.home": "/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home",
-  "rust-analyzer.checkOnSave.command": "clippy"
-}

@@ -1,16 +1,3 @@
-local rt = require("rust-tools")
-
-rt.setup({
-  server = {
-    on_attach = function(_, bufnr)
-      -- Hover actions
-      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-      -- Code action groups
-      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-    end,
-  },
-})
-
 --Set completeopt to have a better completion experience
 -- :help completeopt
 -- menuone: popup even when there's only one match
@@ -93,3 +80,19 @@ vim.api.nvim_create_autocmd("CursorHold", {
   end,
   group = diag_float_grp,
 })
+
+local lspconfig = require'lspconfig'
+
+local bufnr = vim.api.nvim_get_current_buf()
+vim.keymap.set(
+  "n", 
+  "<leader>a", 
+  function()
+    vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
+    -- or vim.lsp.buf.codeAction() if you don't want grouping.
+  end,
+  { silent = true, buffer = bufnr }
+)
+
+vim.lsp.inlay_hint.enable()
+vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#9DA9A0" })

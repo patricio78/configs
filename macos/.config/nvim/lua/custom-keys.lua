@@ -65,7 +65,7 @@ map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
 
 -- FloaTerm configuration
 map('n', "<leader>ft", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=2 fish <CR> ", opts)
-map('n', "t", ":FloatermToggle myfloat<CR>", opts)
+map('n', "<leader>t", ":FloatermToggle myfloat<CR>", opts)
 map('t', "<Esc>", "<C-\\><C-n>:q<CR>", opts)
 
 -- Other:
@@ -85,6 +85,39 @@ vim.keymap.set("n", "g0", vim.lsp.buf.document_symbol, keymap_opts)
 vim.keymap.set("n", "gW", vim.lsp.buf.workspace_symbol, keymap_opts)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opts)
 -- Goto previous/next diagnostic warning/error
-vim.keymap.set("n", "g[", vim.diagnostic.goto_prev, keymap_opts)
-vim.keymap.set("n", "g]", vim.diagnostic.goto_next, keymap_opts)
+--vim.keymap.set("n", "g[", vim.diagnostic.goto_prev, keymap_opts)
+--vim.keymap.set("n", "g]", vim.diagnostic.goto_next, keymap_opts)
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, keymap_opts)
+-- vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, keymap_opts)
+
+--- Telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+-- vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+
+local telescope = require("telescope")
+local lga_actions = require("telescope-live-grep-args.actions")
+
+telescope.setup {
+  extensions = {
+    live_grep_args = {
+      auto_quoting = true, -- enable/disable auto-quoting
+      -- define mappings, e.g.
+      mappings = { -- extend mappings
+        i = {
+          ["<C-k>"] = lga_actions.quote_prompt(),
+          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+        },
+      },
+      -- ... also accepts theme settings, for example:
+      -- theme = "dropdown", -- use dropdown theme
+      -- theme = { }, -- use own theme spec
+      -- layout_config = { mirror=true }, -- mirror preview pane
+    }
+  }
+}
+
+telescope.load_extension("live_grep_args")

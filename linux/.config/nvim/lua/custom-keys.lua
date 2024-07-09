@@ -65,7 +65,7 @@ map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
 
 -- FloaTerm configuration
 map('n', "<leader>ft", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=2 fish <CR> ", opts)
-map('n', "t", ":FloatermToggle myfloat<CR>", opts)
+map('n', "<leader>t", ":FloatermToggle myfloat<CR>", opts)
 map('t', "<Esc>", "<C-\\><C-n>:q<CR>", opts)
 
 -- Other:
@@ -85,9 +85,10 @@ vim.keymap.set("n", "g0", vim.lsp.buf.document_symbol, keymap_opts)
 vim.keymap.set("n", "gW", vim.lsp.buf.workspace_symbol, keymap_opts)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opts)
 -- Goto previous/next diagnostic warning/error
-vim.keymap.set("n", "g[", vim.diagnostic.goto_prev, keymap_opts)
-vim.keymap.set("n", "g]", vim.diagnostic.goto_next, keymap_opts)
+--vim.keymap.set("n", "g[", vim.diagnostic.goto_prev, keymap_opts)
+--vim.keymap.set("n", "g]", vim.diagnostic.goto_next, keymap_opts)
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, keymap_opts)
+-- vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, keymap_opts)
 
 --- Telescope
 local builtin = require('telescope.builtin')
@@ -118,3 +119,5 @@ telescope.setup {
     }
   }
 }
+
+telescope.load_extension("live_grep_args")
