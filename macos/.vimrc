@@ -9,8 +9,8 @@ call plug#begin('~/.vim/plugged')
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
-Plug 'simrat39/rust-tools.nvim'
-Plug 'dense-analysis/ale'
+Plug 'mrcjkb/rustaceanvim'
+"Plug 'dense-analysis/ale'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -20,35 +20,36 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'jparise/vim-graphql'
-" Plug 'timonv/vim-cargo'
-" Plug 'tpope/vim-dispatch'
-" Plug 'preservim/nerdtree'
+Plug 'romgrk/barbar.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'brainfucksec/neovim-lua'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
 Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-obsession'
+Plug 'voldikss/vim-floaterm'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-tree/nvim-web-devicons'
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'nvim-lua/plenary.nvim'
-Plug 'mfussenegger/nvim-dap'
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'rcarriga/nvim-dap-ui'
-Plug 'brainfucksec/neovim-lua'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'sindrets/diffview.nvim'
-Plug 'preservim/nerdcommenter'
-Plug 'romgrk/barbar.nvim'
-" Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'dhruvasagar/vim-zoom'
 Plug 'tpope/vim-fugitive'
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'voldikss/vim-floaterm'
+Plug 'dhruvasagar/vim-zoom'
+Plug 'preservim/nerdcommenter'
+Plug 'sindrets/diffview.nvim'
+Plug 'timonv/vim-cargo'
+" Plug 'tpope/vim-dispatch'
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-obsession'
+Plug 'p00f/clangd_extensions.nvim'
+Plug 'nvim-neotest/nvim-nio'
+Plug 'nvim-telescope/telescope-live-grep-args.nvim'
+Plug 'sindrets/diffview.nvim'
 
 call plug#end()
 
 set cursorline
 
-let g:rustfmt_autosave = 1
+" let g:rustfmt_autosave = 1
 " let g:rustfmt_emit_files = 1
 " let g:rustfmt_fail_silently = 0
 let g:cargo_command = "Dispatch cargo {cmd}"
@@ -77,9 +78,9 @@ function! CheckBackspace() abort
 endfunction
 
 " Nerdtree
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <leader>nt :NERDTreeToggle<CR>
-nnoremap <leader>nf :NERDTreeFind<CR>
+" nnoremap <leader>n :NERDTreeFocus<CR>
+" nnoremap <leader>nt :NERDTreeToggle<CR>
+" nnoremap <leader>nf :NERDTreeFind<CR>
 
 function! LinterStatus() abort
       let l:counts = ale#statusline#Count(bufnr(''))

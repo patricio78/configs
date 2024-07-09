@@ -7,5 +7,6 @@ lua require('debugging')
 lua require('custom-keys')
 lua require('rust')
 lua require('treesitter')
+lua require('clangd')
 
 lua vim.loader.enable()
