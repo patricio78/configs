@@ -89,9 +89,10 @@ vim.keymap.set(
   "<leader>a", 
   function()
     vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
-    -- or vim.lsp.buf.codeAction() if you don't want grouping.
+    -- vim.lsp.buf.codeAction() -- if you don't want grouping.
   end,
-  { silent = true, buffer = bufnr }
+  { silent = true}
+  --{ silent = true, buffer = bufnr}
 )
 
 vim.lsp.inlay_hint.enable()
