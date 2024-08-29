@@ -3,7 +3,7 @@ local opts = { noremap = true, silent = true }
 
 -- Debugging
 -- Press Ctrl+d to toggle debug mode, will remove NvimTree also
--- map('n', '<F2>', [[:NERDTreeClose<CR> :lua require'dapui'.toggle()<CR>]], {})
+map('n', '<F2>', [[:NERDTreeClose<CR> :lua require'dapui'.toggle()<CR>]], {})
 -- Press f5 to debug
 map('n', '<F5>', [[:lua require'dap'.continue()<CR>]], {})
 -- Press F4 to toggle regular breakpoint
@@ -97,6 +97,7 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+vim.keymap.set('n', '<leader>fz', builtin.current_buffer_fuzzy_find, {})
 
 local telescope = require("telescope")
 local lga_actions = require("telescope-live-grep-args.actions")
@@ -121,3 +122,13 @@ telescope.setup {
 }
 
 telescope.load_extension("live_grep_args")
+
+-- Nerd treee
+map('n', '<leader>n', [[:NERDTree<CR>]], {})
+map('n', '<leader>t', [[:NERDTreeToggle<CR>]], {})
+map('n', '<leader>f', [[:NERDTreeFind<CR>]], {})
+
+-- Diff
+
+map('n', '<leader>d', [[:DiffviewOpen<CR>]], {})
+map('n', '<leader>dd', [[:DiffviewClose<CR>]], {})

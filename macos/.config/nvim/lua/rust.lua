@@ -97,3 +97,33 @@ vim.keymap.set(
 
 vim.lsp.inlay_hint.enable()
 vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#9DA9A0" })
+
+require('neotest').setup {
+    adapters = {
+      require('rustaceanvim.neotest')
+    },
+}
+vim.keymap.set(
+  "n",
+  "tt",
+  function()
+     require("neotest").run.run()
+  end,
+  {silent = true}
+)
+vim.keymap.set(
+  "n",
+  "ttt",
+  function()
+     require("neotest").run.run(vim.fn.expand("%"))
+  end,
+  {silent = true}
+)
+vim.keymap.set(
+  "n",
+  "td",
+  function()
+     require("neotest").run.run({strategy = "dap"})
+  end,
+  {silent = true}
+)

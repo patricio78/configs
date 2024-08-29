@@ -44,6 +44,9 @@ Plug 'p00f/clangd_extensions.nvim'
 Plug 'nvim-neotest/nvim-nio'
 Plug 'nvim-telescope/telescope-live-grep-args.nvim'
 Plug 'sindrets/diffview.nvim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'antoinemadec/FixCursorHold.nvim'
+Plug 'nvim-neotest/neotest'
 
 call plug#end()
 
