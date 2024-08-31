@@ -125,8 +125,8 @@ telescope.load_extension("live_grep_args")
 
 -- Nerd treee
 map('n', '<leader>n', [[:NERDTree<CR>]], {})
-map('n', '<leader>t', [[:NERDTreeToggle<CR>]], {})
-map('n', '<leader>f', [[:NERDTreeFind<CR>]], {})
+map('n', '<leader>nt', [[:NERDTreeToggle<CR>]], {})
+map('n', '<leader>nf', [[:NERDTreeFind<CR>]], {})
 
 -- Diff
 
