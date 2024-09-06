@@ -1,6 +1,5 @@
-local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.9.0/'
-local codelldb_path = extension_path .. 'adapter/codelldb'
-local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
+local extension_path = vim.env.HOME .. '/Downloads/extension'
+local codelldb_path = extension_path .. '/adapter/codelldb'
 
 local dap = require('dap')
 dap.adapters.codelldb = {
