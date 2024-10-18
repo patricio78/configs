@@ -127,3 +127,19 @@ vim.keymap.set(
   end,
   {silent = true}
 )
+vim.keymap.set(
+  "n",
+  "<leader>r",
+  function()
+     vim.cmd.RustLsp('run')
+  end,
+  {silent = true}
+)
+vim.keymap.set(
+  "n",
+  "<leader>rr",
+  function()
+     vim.cmd.RustLsp('runnables')
+  end,
+  {silent = true}
+)
