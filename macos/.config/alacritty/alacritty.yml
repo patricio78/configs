@@ -1,6 +1,6 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 shell:
-  program: /bin/zsh
+  program: /opt/homebrew/bin/fish
   args:
     - -l
     - -c

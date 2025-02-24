@@ -1,0 +1,3 @@
+[submodule "macos/.config/alacritty/themes"]
+	path = macos/.config/alacritty/themes
+	url = ssh://git@github.com/alacritty/alacritty-theme

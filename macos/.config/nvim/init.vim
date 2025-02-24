@@ -8,5 +8,8 @@ lua require('custom-keys')
 lua require('rust')
 lua require('treesitter')
 lua require('clangd')
+lua require('java')
+lua require('typescript')
+lua require('helm')
 
 lua vim.loader.enable()

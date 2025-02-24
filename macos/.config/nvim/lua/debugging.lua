@@ -32,3 +32,11 @@ dap.configurations.rust = dap.configurations.cpp
 
 require('dapui').setup()
 
+vim.g.rustaceanvim = function()
+  local cfg = require('rustaceanvim.config')
+  return {
+    dap = {
+      adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+    },
+  }
+end
