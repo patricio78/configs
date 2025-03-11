@@ -24,3 +24,4 @@ if status is-interactive
 end
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
+jdk 21 &> /dev/null

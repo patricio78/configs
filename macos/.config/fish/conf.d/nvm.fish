@@ -26,3 +26,5 @@ end
 if status is-interactive && set --query nvm_default_version && ! set --query nvm_current_version
     nvm use --silent $nvm_default_version
 end
+
+nvm use 21 > /dev/null
