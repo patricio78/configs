@@ -52,6 +52,9 @@ Plug 'towolf/vim-helm'
 Plug 'mrjosh/helm-ls'
 Plug 'alexander-born/bazel.nvim'
 Plug 'mfussenegger/nvim-jdtls'
+Plug 'ray-x/go.nvim'
+Plug 'ray-x/guihua.lua'
+Plug 'theHamsta/nvim-dap-virtual-text'
 
 call plug#end()
 
