@@ -47,6 +47,14 @@ Plug 'sindrets/diffview.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'nvim-neotest/neotest'
+Plug 'github/copilot.vim'
+Plug 'towolf/vim-helm'
+Plug 'mrjosh/helm-ls'
+Plug 'alexander-born/bazel.nvim'
+Plug 'mfussenegger/nvim-jdtls'
+Plug 'ray-x/go.nvim'
+Plug 'ray-x/guihua.lua'
+Plug 'theHamsta/nvim-dap-virtual-text'
 
 call plug#end()
 

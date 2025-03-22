@@ -1,5 +1,6 @@
-local extension_path = vim.env.HOME .. '/Downloads/extension'
-local codelldb_path = extension_path .. '/adapter/codelldb'
+local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.9.0/'
+local codelldb_path = extension_path .. 'adapter/codelldb'
+local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
 
 local dap = require('dap')
 dap.adapters.codelldb = {
@@ -30,3 +31,12 @@ dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 
 require('dapui').setup()
+
+vim.g.rustaceanvim = function()
+  local cfg = require('rustaceanvim.config')
+  return {
+    dap = {
+      adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+    },
+  }
+end
