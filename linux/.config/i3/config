@@ -125,7 +125,7 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-workspace $ws1 output DP-0.1.
+workspace $ws1 output DP-0.1.1
 workspace $ws2 output DP-0.8
 workspace $ws3 output DP-0.1.1
 workspace $ws4 output DP-0.1.1
@@ -159,7 +159,14 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+mode "exit" {
+        bindsym $mod+Shift+e exec i3-msg exit
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e mode "exit"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -193,6 +200,8 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         tray_output primary
+        font xft:MesloLGS NF Regular 10
+        separator_symbol "|"
 }
 
 # Customizations
@@ -207,14 +216,26 @@ bindsym Control+$mod+l exec "i3lock -i /usr/share/backgrounds/Jammy-Jellyfish_WP
 # Bluetooth
 exec --no-startup-id blueman-applet
 
+# Dropbox
+exec --no-startup-id ~/.dropbox-dist/dropboxd
+
 # pasystray
 #exec --no-startup-id /bin/pasystray
+
+# Sound indicator
+exec --no-startup-id indicator-sound-switcher
 
 # Start compton
 #exec --no-startup-id /usr/bin/compton --config /home/patricio/.config/i3/compton.conf
 
 # Switch audio
 bindsym XF86Tools workspace $ws4; exec "spotify &"
-bindsym $mod+XF86Tools exec "pactl set-default-sink alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2"
-bindsym Control+XF86Tools exec "pactl set-default-sink bluez_output.08_DF_1F_B3_B9_44.a2dp-sink"
+bindsym $mod+XF86Tools exec "pactl set-default-sink alsa_output.pci-0000_01_00.1.hdmi-stereo-extra1"
+bindsym Control+XF86Tools exec "pactl set-default-sink bluez_sink.08_DF_1F_B3_B9_44.a2dp_sink"
 bindsym Control+$mod+XF86Tools exec "pactl set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo"
+
+bindsym $mod+Ctrl+greater move workspace to output right
+bindsym $mod+Ctrl+less  move workspace to output left
+
+# close notifications
+bindsym ctrl+q exec dunstctl close-all
