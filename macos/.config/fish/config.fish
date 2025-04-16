@@ -2,7 +2,9 @@ if status is-interactive
 
     set -g fish_key_bindings fish_vi_key_bindings
 
-    set GOPATH ~/work/go
+    set -g GOPATH ~/work/go
+    set -gx GOBIN /opt/homebrew/bin
+    fish_add_path $GOBIN
     fish_add_path ~/bin
     fish_add_path /opt/homebrew/Cellar/llvm/18.1.7/bin
     fish_add_path /usr/local/bin /usr/bin:/bin:/usr/sbin:/sbin:~/work/bash-tools/bin
