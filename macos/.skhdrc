@@ -92,15 +92,14 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 alt + shift - f : yabai -m window --toggle native-fullscreen
 
 # move around desktop
-#alt - 1 : yabai -m query --spaces --space 1 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
-#alt - 2 : yabai -m query --spaces --space 2 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
-#alt - 3 : yabai -m query --spaces --space 3 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
-#alt - 4 : yabai -m query --spaces --space 4 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
-#alt - 5 : yabai -m query --spaces --space 5 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
-#alt - 6 : yabai -m query --spaces --space 6 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
-#alt - 7 : yabai -m query --spaces --space 7 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
-#alt - 8 : yabai -m query --spaces --space 8 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
-#alt - 9 : yabai -m query --spaces --space 9 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
+alt - 1 : yabai -m query --spaces --space 1 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
+alt - 2 : yabai -m query --spaces --space 2 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
+alt - 3 : yabai -m query --spaces --space 3 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
+alt - 4 : yabai -m query --spaces --space 4 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
+alt - 5 : yabai -m query --spaces --space 5 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
+alt - 6 : yabai -m query --spaces --space 6 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
+alt - 7 : yabai -m query --spaces --space 7 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
+alt - 8 : yabai -m query --spaces --space 8 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
 
 # open terminal
 #alt - return : osascript /Users/pbarletta/Library/Scripts/new-iterm-window.scpt
