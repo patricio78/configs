@@ -89,11 +89,18 @@ vim.keymap.set(
   "<leader>a", 
   function()
     vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
-    -- vim.lsp.buf.codeAction() -- if you don't want grouping.
   end,
   { silent = true}
-  --{ silent = true, buffer = bufnr}
 )
+vim.keymap.set(
+  "n", 
+  "<leader>p", 
+  function()
+    vim.cmd.RustLsp('parentModule') -- supports rust-analyzer's grouping
+  end,
+  { silent = true}
+)
+
 
 vim.lsp.inlay_hint.enable()
 vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#9DA9A0" })
