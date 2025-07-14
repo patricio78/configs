@@ -12,6 +12,8 @@ lua require('clangd')
 lua require('typescript')
 lua require('helm')
 lua require('go-init')
+lua require('protobuf')
+lua require('python')
 
 lua require("nvim-dap-virtual-text").setup()
 
