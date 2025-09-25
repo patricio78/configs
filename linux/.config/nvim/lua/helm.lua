@@ -1,6 +1,4 @@
-local lspconfig = require('lspconfig')
-
-lspconfig.helm_ls.setup {
+vim.lsp.config("helm_ls", {
   settings = {
     ['helm-ls'] = {
       yamlls = {
@@ -8,4 +6,4 @@ lspconfig.helm_ls.setup {
       }
     }
   }
-}
+})

@@ -81,8 +81,6 @@ vim.api.nvim_create_autocmd("CursorHold", {
   group = diag_float_grp,
 })
 
-local lspconfig = require'lspconfig'
-
 local bufnr = vim.api.nvim_get_current_buf()
 vim.keymap.set(
   "n", 

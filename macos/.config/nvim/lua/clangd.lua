@@ -1,1 +1,3 @@
-require'lspconfig'.clangd.setup{}
+vim.lsp.config("clangd", {
+    filetypes = {'c', 'cpp'}
+})
